@@ -5,6 +5,10 @@ import sys
 import os
 import wget
 
+if sys.version_info < (3, 0):
+    reload(sys)
+    sys.setdefaultencoding("utf-8")
+
 
 def get_urls_in_category_page(page_id):
     headers = {
