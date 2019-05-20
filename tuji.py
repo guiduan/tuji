@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 import requests
 import re
 import sys
@@ -61,6 +62,7 @@ def download_file(download_url, local_path=os.getcwd() + '/'):
         total_size = int(f.headers['Content-Length'])
     temp_size = 0
     file_name = download_url.split('/')[-1]
+    file_name = file_name.replace('*', '')
     print('正在下载文件 ' + file_name)
     with open(local_path + file_name, 'wb') as code:
         for chunk in f.iter_content(chunk_size=1024):
@@ -83,7 +85,7 @@ def wget_file(download_url, local_path=os.getcwd() + '/'):
 
 
 if __name__ == '__main__':
-    for page_id in range(101, 151):  # 第101页到第150页
+    for page_id in range(134, 151):  # 第101页到第150页
         urls_in_category_page = get_urls_in_category_page(page_id)
         print('获取第 ' + str(page_id) + ' 页下载页面列表: ')
         print(urls_in_category_page)
